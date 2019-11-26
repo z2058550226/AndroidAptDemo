@@ -1,10 +1,20 @@
 package com.suikajy.apt_processor;
 
-import com.squareup.javapoet.JavaFile;
-import com.suikajy.apt_annotation.BindView;
 import com.google.auto.service.AutoService;
+import com.suikajy.apt_annotation.BindView;
 
-import javax.annotation.processing.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Messager;
+import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
+import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
@@ -12,9 +22,6 @@ import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.*;
 
 /**
  * Created by suikajy on 2018.10.24
